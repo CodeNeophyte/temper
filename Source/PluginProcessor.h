@@ -64,7 +64,9 @@ private:
     AudioProcessorValueTreeState m_params;
     AudioSampleBuffer m_tempBuffer;
 
-    OwnedArray<dsp> m_dsps;
+    // An explicit reference, `::dsp`, to the Faust dsp class introduced
+    // in the global namespace.
+    OwnedArray<::dsp> m_dsps;
     ScopedPointer<FaustUIBridge> m_bridge;
     ScopedPointer<RestrictionProcessor> m_restriction;
 

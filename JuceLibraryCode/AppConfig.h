@@ -34,15 +34,12 @@
 
 // BEGIN SECTION A
 
-// The Producer will overwrite this section on save because the Producer is not built
-// in its GPL version. This is a note to remind myself to just check these changes
-// back into git when it happens.
 #ifndef JUCE_DISPLAY_SPLASH_SCREEN
- #define JUCE_DISPLAY_SPLASH_SCREEN 0
+ #define JUCE_DISPLAY_SPLASH_SCREEN 1
 #endif
 
 #ifndef JUCE_REPORT_APP_USAGE
- #define JUCE_REPORT_APP_USAGE 0
+ #define JUCE_REPORT_APP_USAGE 1
 #endif
 
 
@@ -134,6 +131,10 @@
  //#define JUCE_FORCE_USE_LEGACY_PARAM_IDS 1
 #endif
 
+#ifndef    JUCE_FORCE_LEGACY_PARAMETER_AUTOMATION_TYPE
+ //#define JUCE_FORCE_LEGACY_PARAMETER_AUTOMATION_TYPE 1
+#endif
+
 #ifndef    JUCE_USE_STUDIO_ONE_COMPATIBLE_PARAMETERS
  //#define JUCE_USE_STUDIO_ONE_COMPATIBLE_PARAMETERS 1
 #endif
@@ -205,6 +206,10 @@
 
 #ifndef    JUCE_DSP_USE_STATIC_FFTW
  //#define JUCE_DSP_USE_STATIC_FFTW 1
+#endif
+
+#ifndef    JUCE_DSP_ENABLE_SNAP_TO_ZERO
+ //#define JUCE_DSP_ENABLE_SNAP_TO_ZERO 1
 #endif
 
 //==============================================================================

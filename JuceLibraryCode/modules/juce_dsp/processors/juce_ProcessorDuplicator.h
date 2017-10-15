@@ -24,6 +24,10 @@
   ==============================================================================
 */
 
+namespace juce
+{
+namespace dsp
+{
 
 /**
     Converts a mono processor class into a multi-channel version by duplicating it
@@ -36,7 +40,7 @@
 template <typename MonoProcessorType, typename StateType>
 struct ProcessorDuplicator
 {
-    ProcessorDuplicator() {}
+    ProcessorDuplicator() : state (new StateType()) {}
     ProcessorDuplicator (StateType* stateToUse) : state (stateToUse) {}
     ProcessorDuplicator (const ProcessorDuplicator&) = default;
     ProcessorDuplicator (ProcessorDuplicator&&) = default;
@@ -88,3 +92,6 @@ private:
 
     juce::OwnedArray<MonoProcessorType> processors;
 };
+
+} // namespace dsp
+} // namespace juce

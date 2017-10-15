@@ -24,6 +24,10 @@
   ==============================================================================
 */
 
+namespace juce
+{
+namespace dsp
+{
 
 /**
     Applies a gain to audio samples as single samples or AudioBlocks.
@@ -57,6 +61,7 @@ public:
         }
     }
 
+    /** Returns the ramp duration in seconds. */
     double getRampDurationSeconds() const noexcept              { return rampDurationSeconds; }
 
     /** Returns true if the current value is currently being interpolated. */
@@ -125,3 +130,6 @@ private:
     LinearSmoothedValue<FloatType> gain;
     double sampleRate = 0, rampDurationSeconds = 0;
 };
+
+} // namespace dsp
+} // namespace juce

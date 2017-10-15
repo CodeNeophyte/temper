@@ -24,6 +24,10 @@
   ==============================================================================
 */
 
+namespace juce
+{
+namespace dsp
+{
 
 /**
     A class which provides multiple windowing functions useful for filter design
@@ -38,8 +42,8 @@ struct WindowingFunction
         triangular,
         hann,
         hamming,
-        blackmann,
-        blackmannHarris,
+        blackman,
+        blackmanHarris,
         flatTop,
         kaiser,
         numWindowingMethods
@@ -71,3 +75,6 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowingFunction)
 };
+
+} // namespace dsp
+} // namespace juce

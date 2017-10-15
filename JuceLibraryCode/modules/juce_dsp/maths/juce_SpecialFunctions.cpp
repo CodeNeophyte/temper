@@ -24,6 +24,10 @@
   ==============================================================================
 */
 
+namespace juce
+{
+namespace dsp
+{
 
 double SpecialFunctions::besselI0 (double x) noexcept
 {
@@ -45,7 +49,7 @@ double SpecialFunctions::besselI0 (double x) noexcept
                  + y * (-0.2057706e-1 + y * (0.2635537e-1 + y * (-0.1647633e-1 + y * 0.392377e-2))))))));
 }
 
-void SpecialFunctions::ellipicIntegralK (double k, double& K, double& Kp) noexcept
+void SpecialFunctions::ellipticIntegralK (double k, double& K, double& Kp) noexcept
 {
     constexpr int M = 4;
 
@@ -133,3 +137,6 @@ Complex<double> SpecialFunctions::asne (Complex<double> w, double k) noexcept
 
     return 2.0 / double_Pi * std::asin (last);
 }
+
+} // namespace dsp
+} // namespace juce

@@ -24,10 +24,13 @@
   ==============================================================================
 */
 
-
 /**
     Classes for IIR filter processing.
 */
+namespace juce
+{
+namespace dsp
+{
 namespace IIR
 {
     template <typename NumericType>
@@ -42,7 +45,7 @@ namespace IIR
         which is designed to prevent artefacts at parameter changes, instead of the
         class Filter.
 
-        @see Filter::Coefficients, FilterAudioSource, @StateVariableFilter
+        @see Filter::Coefficients, FilterAudioSource, StateVariableFilter
     */
     template <typename SampleType>
     class Filter
@@ -86,7 +89,13 @@ namespace IIR
             Note that this clears the processing state, but the type of filter and
             its coefficients aren't changed.
         */
-        void reset();
+        void reset()            { reset (SampleType {0}); }
+
+        /** Resets the filter's processing pipeline to a specific value.
+
+            @see reset
+        */
+        void reset (SampleType resetToValue);
 
         //==============================================================================
         /** Called before processing starts. */
@@ -105,9 +114,14 @@ namespace IIR
         */
         SampleType JUCE_VECTOR_CALLTYPE processSample (SampleType sample) noexcept;
 
+        /** Ensure that the state variables are rounded to zero if the state
+            variables are denormals. This is only needed if you are doing
+            sample by sample processing.
+        */
+        void snapToZero() noexcept;
+
     private:
         //==============================================================================
-        void snapToZero() noexcept;
         void check();
 
         //==============================================================================
@@ -270,5 +284,8 @@ namespace IIR
         static constexpr NumericType inverseRootTwo = static_cast<NumericType> (0.70710678118654752440L);
     };
 
-    #include "juce_IIRFilter_Impl.h"
-}
+} // namespace IIR
+} // namespace dsp
+} // namespace juce
+
+#include "juce_IIRFilter_Impl.h"

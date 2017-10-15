@@ -24,6 +24,11 @@
   ==============================================================================
 */
 
+namespace juce
+{
+namespace dsp
+{
+
 template <typename FloatType>
 static inline FloatType ncos (size_t order, size_t i, size_t size) noexcept
 {
@@ -88,7 +93,7 @@ void WindowingFunction<FloatType>::fillWindowingTables (FloatType* samples, size
         }
         break;
 
-        case blackmann:
+        case blackman:
         {
             constexpr FloatType alpha = 0.16f;
 
@@ -102,7 +107,7 @@ void WindowingFunction<FloatType>::fillWindowingTables (FloatType* samples, size
         }
         break;
 
-        case blackmannHarris:
+        case blackmanHarris:
         {
             for (size_t i = 0; i < size; ++i)
             {
@@ -174,8 +179,8 @@ const char* WindowingFunction<FloatType>::getWindowingMethodName (WindowingMetho
         case triangular:        return "Triangular";
         case hann:              return "Hann";
         case hamming:           return "Hamming";
-        case blackmann:         return "Blackmann";
-        case blackmannHarris:   return "Blackmann-Harris";
+        case blackman:          return "Blackman";
+        case blackmanHarris:    return "Blackman-Harris";
         case flatTop:           return "FlatTop";
         case kaiser:            return "Kaiser";
         default: jassertfalse;  return "";
@@ -184,3 +189,6 @@ const char* WindowingFunction<FloatType>::getWindowingMethodName (WindowingMetho
 
 template struct WindowingFunction<float>;
 template struct WindowingFunction<double>;
+
+} // namespace dsp
+} // namespace juce
